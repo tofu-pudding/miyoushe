@@ -1,33 +1,28 @@
-# miyoubiAuto 
-米游社每日米游币自动化Python脚本(务必使用Python3)  
-10.8更新：更换cookie的获取地址
-## 注意：禁止在B站、贴吧、或各大论坛大肆传播！
-#### 小引一波 
-推荐关注几个非常可爱有趣的女孩！ 
-欢迎B站搜索:  
-[@嘉然今天吃什么](https://space.bilibili.com/672328094/)&emsp;[@向晚大魔王](https://space.bilibili.com/672346917/)&emsp;&emsp;[@乃琳Queen](https://space.bilibili.com/672342685/)&emsp;&emsp;&emsp;[@贝拉kira](https://space.bilibili.com/672353429/)&emsp;&emsp;&emsp;[@珈乐Carol](https://space.bilibili.com/351609538/)</br>
-<img src="https://i2.hdslb.com/bfs/face/d399d6f5cf7943a996ae96999ba3e6ae2a2988de.jpg@128w_128h_1o.webp" /><img src="https://i0.hdslb.com/bfs/face/566078c52b408571d8ae5e3bcdf57b2283024c27.jpg@128w_128h_1o.webp" /><img src="https://i1.hdslb.com/bfs/face/8895c87082beba1355ea4bc7f91f2786ef49e354.jpg@128w_128h_1o.webp" /><img src="https://i2.hdslb.com/bfs/face/668af440f8a8065743d3fa79cfa8f017905d0065.jpg@128w_128h_1o.webp" /><img src="https://i1.hdslb.com/bfs/face/a7fea00016a8d3ffb015b6ed8647cc3ed89cbc63.jpg@128w_128h_1o.webp" />
+# miyoushe
+fork from https://github.com/XiaoMiku01/miyoubiAuto
+支持多账号原神签到和米游币自动领取的python脚本
+要求python3以上
+禁止在B站、贴吧、或各大论坛大肆传播！
+
 ### 第三方库
 
 ```shell
-pip install requests
-或
-pip3 install requests
+pip install requests,loguru,schedule
 ```
 ### 食用方法
  1.下载源码  
- 2.在Global.py中设置米游社Cookie  
- 3.运行myb.py  
- 本地第一次运行时会自动生产一个文件储存cookie，请勿删除
- ```shell
- python3 myb.py
- 或
- python myb.py
+ 2.在cookies.txt中设置米游社Cookie(如果需要米游币相关，则需要米哈游通行证cookie)  
+ 3.运行main.py（后台可能会被杀死，建议使用服务）
+  ```shell
+ python main.py
  ```
-#### 当前仅支持单个账号！  
+ 4.服务器的话可以将其安装为服务，配置miyoushe文件中的MIYOUSHE_HOME，将其移动到/etc/rc.d/init.d/目录下执行以下语句
+   ```shell
+ chkconfig miyoushe --level 2345 on
+ service miyoushe start
+ ```
 
 ###  获取Cookie方法
-
 
 1. 浏览器**无痕模式**打开 [http://user.mihoyo.com/](http://user.mihoyo.com/) ，登录账号
 2. 按`F12`，打开`开发者工具`，找到并点击`Network`
@@ -50,8 +45,6 @@ pip3 install requests
 2. 进入项目文件夹打开命令行执行以下命令
    ```shell
    python index.py "xxxxxxx"
-   或
-   python3 index.py "xxxxxxx"
    ```
    xxxxxxx为通过上面方式或取得米游社cookie  
    一定要用**双引号**包裹!!  
